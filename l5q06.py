@@ -3,23 +3,25 @@
 """
 from datetime import datetime
 
-def converte_hora_24_12(hora):
+
+def converte_hora_24_12(hora_str):
+    hora = int(hora_str)
     if int(hora) > 12:
         hora -= 12
     return hora
-    
-def mostrar(hora):
-    if int(hora[1]) < 12:
+
+
+def mostrar(hora_str):
+    hora = hora_str.split(':')
+    if int(hora[0]) < 12:
         am_pm = 'A'
     else:
         am_pm = 'P'
-    
-    return f'{converte_hora_24_12(hora[1]):2}:{hora[2]:2} {am_pm}'
-    
+
+    return f'{converte_hora_24_12(hora[0]):2}:{hora[1]:2} {am_pm}'
+
+
 hoje = datetime.today()
 hora = hoje.strftime("%H:%M")
 
-hmin = hora.strip(':')
-
-print(hmin)
 print(mostrar(hora))
